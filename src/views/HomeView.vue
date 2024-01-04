@@ -7,12 +7,6 @@
       <div class="top w-[100%] flex flex-row justify-center items-center h-[116px] bg-[#FF4508]">
         <img class="w-[110px]" src="../assets/logo.png" alt="">
       </div>
-      <div class="content pt-[25px] flex flex-row justify-center">
-        <RouterLink class="w-[100%] flex flex-row justify-center" to="/results"><div class="block cursor-pointer flex flex-row px-[15px] justify-start items-center">
-            <img src="../assets/mock.png" class="mr-[15px]" alt="">
-            <span class="text-[18px] font-semibold">Mock exam({{ this.date }})</span>
-        </div></RouterLink>
-      </div>
     </div>
     <div class="animationWin" v-if="entered">
       <div class="logo absolute"><img src="../assets/logo.png" alt=""></div>
@@ -38,24 +32,10 @@ export default {
       loading: false,
       entered: true,
       date: '',
-      Sheet_ID: '1-ArEkK19KDY-GjhsO_V_NvQpHqos1V_DLdLOy4jgsYI',
-      Sheet_TITLE: 'Registan_Mock',
     };
   },
 
   mounted() {
-    this.Full_URL = 'https://docs.google.com/spreadsheets/d/' + this.Sheet_ID + '/gviz/tq?sheet=' + this.Sheet_TITLE
-    fetch(this.Full_URL)
-      .then(res => res.text())
-      .then(rep => {
-        let data = JSON.parse(rep.substr(47).slice(0, -2))
-        for (let i of data.table.rows) {
-          if (data.table.rows.indexOf(i) == 0) {
-            this.date = i.c[0].f
-          }
-        }
-      })
-
     this.animateLetters();
     setTimeout(() => {
       this.loading = true

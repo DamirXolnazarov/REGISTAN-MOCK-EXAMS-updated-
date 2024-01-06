@@ -1,5 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import StudentAccount from '../views/StudentAccount.vue'
+import TeacherAccount from '../views/TeacherAccount.vue'
+import ManagerAccount from '../views/ManagerAccount.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -8,6 +11,21 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: HomeView
+    },
+    {
+      path: '/createStudentAcc',
+      name: 'studentAcc',
+      component: StudentAccount
+    },
+    {
+      path: '/createTeacherAcc',
+      name: 'teacherAcc',
+      component: TeacherAccount
+    },
+    {
+      path: '/createManagerAcc',
+      name: 'managerAcc',
+      component: ManagerAccount
     },
   ]
 })

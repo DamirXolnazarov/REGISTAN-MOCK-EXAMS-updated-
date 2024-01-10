@@ -5,5 +5,26 @@
     width: 100vw;
     height: 100vh;
     font-family: 'Inter', sans-serif;
+    
+}
+*:focus-visible{
+    outline: none;
+}
 
+@layer primevue {
+    *:enabled:focus {
+      outline: 0 none !important;
+      outline-offset: 0 !important;
+      box-shadow: none !important;
+      border-color: none !important;
+    }
+  }
+.p-icon{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    cursor: pointer;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
 }

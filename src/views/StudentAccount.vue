@@ -156,7 +156,9 @@ export default {
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
-
+input{
+  color: #FF4508 !important;
+}
 .asd {
   font-size: 36px;
   border: none
@@ -384,6 +386,9 @@ input[type="submit"]:active {
     width: calc(10vw - 2px);
     height: calc(10vw - 2px);
   }
+}
+input[type='submit']{
+  color: white !important;
 }
 
 @media (max-width: 600px) {

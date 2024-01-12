@@ -59,16 +59,20 @@ import Arrow from '@/components/Arrow.vue';
             <h2>Sign In</h2>
 
             <div class="form">
+              <span class="wrong text-[20px] w-[100%]" v-if="mistake">Your login or password is wrong!</span>
 
               <div class="inputBox">
 
-                <input type="text" required> <i>Username</i>
+                <input @input="mistake = false" type="text" v-model="login" class="text-[#FF4508]" required>
+                <i>Username</i>
 
               </div>
 
               <div class="inputBox relative">
-                <input v-model="password" v-if="show == false" class="text-[#FF4508]" type="password" required>
-                <input v-model="password" v-if="show" class="text-[#FF4508]" type="text" required>
+                <input @input="mistake = false" v-model="password" v-if="show == false" class="text-[#FF4508]"
+                  type="password" required>
+                <input @input="mistake = false" v-model="password" v-if="show" class="text-[#FF4508]" type="text"
+                  required>
                 <div @click="show = !show" class="btn cursor-pointer absolute right-[15px]">
                   <img class="w-[20px]" v-if="show" src="../assets/show.png" alt="">
                   <img class="w-[20px]" v-if="show == false" src="../assets/eye.png" alt="">
@@ -83,7 +87,7 @@ import Arrow from '@/components/Arrow.vue';
 
               <div class="inputBox">
 
-                <input type="submit" value="Login">
+                <input @click="send" type="submit" value="Login">
 
               </div>
 
@@ -108,31 +112,56 @@ export default {
   data() {
     return {
       password: '',
+      login: '',
+      mistake: false,
       show: false,
     };
   },
 
   mounted() {
 
+    console.log(import.meta.env.VITE_MANAGER_LOGIN);
   },
 
   methods: {
-
+    send() {
+      if (this.login !== import.meta.env.VITE_MANAGER_LOGIN && this.password !== import.meta.env.VITE_MANAGER_PASSWORD) {
+        this.mistake = true
+      } else {
+        alert('You are correct')
+      }
+    }
   },
 };
 </script>
 
 <style scoped>
-.btn{
-  top: 50%;
-  transform: translateY(-50%);
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+input{
+  color: #FF4508 !important;
 }
 .asd {
   font-size: 36px;
   border: none
 }
+.wrong{
+  background: none;
+  appearance: none;
+  transition: .3s;
+  width: 100%;
+}
 
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+.btn {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.hidePassword {
+  right: 15px;
+  background-size: cover;
+  top: 50%;
+  transform: translateY(-50%);
+}
 
 .leave {
   z-index: 9999 !important;
@@ -140,6 +169,7 @@ export default {
 
 section {
   position: absolute;
+  transition: .3s;
   background: #000;
   width: 100vw;
   height: 100vh;
@@ -189,6 +219,7 @@ section .signin {
   position: absolute;
   width: 90%;
   background: #FF4508;
+  transition: .3s;
   z-index: 1000;
   top: 40%;
   left: 50%;
@@ -207,6 +238,7 @@ section .signin .content {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: .3s;
   flex-direction: column;
   gap: 40px;
 }
@@ -220,6 +252,7 @@ section .signin .content h2 {
 section .signin .content .form {
   width: 100%;
   display: flex;
+  transition: .3s;
   flex-direction: column;
   gap: 25px;
 }
@@ -234,10 +267,42 @@ section .signin .content .form .inputBox input {
   width: 100%;
   background: #ffffff;
   border: none;
+  color: #FF4508;
   outline: none;
   padding: 25px 10px 7.5px;
   border-radius: 4px;
-  color: #fff;
+  font-weight: 500;
+  font-size: 1em;
+}
+
+.p-password-input {
+  font-size: 15px;
+}
+
+.p-inputtext .p-component .p-password-input:focus-visible {
+  outline: none;
+}
+
+.p-icon {
+  width: 25px;
+  height: 25px;
+}
+
+section .signin .content .form .inputBox .inp[data-v-ae13ceef] {
+  width: 100%;
+  height: 55px;
+  padding: 0px !important;
+}
+
+section .signin .content .form .inputBox .inp {
+  position: relative;
+  width: 100%;
+  background: #ffffff;
+  border: none;
+  color: #FF4508;
+  outline: none;
+  padding: 25px 10px 7.5px;
+  border-radius: 4px;
   font-weight: 500;
   font-size: 1em;
 }
@@ -259,6 +324,13 @@ section .signin .content .form .inputBox i {
   color: #fff;
 }
 
+.signin .content .form .inputBox .inp:focus~i,
+.signin .content .form .inputBox .inp:valid~i {
+  transform: translateY(-7.5px);
+  font-size: 0.8em;
+  color: #fff;
+}
+
 .signin .content .form .links {
   position: relative;
   width: 100%;
@@ -266,6 +338,9 @@ section .signin .content .form .inputBox i {
   justify-content: space-between;
 }
 
+input[type='submit']{
+  color: white !important;
+}
 .signin .content .form .links a {
   color: #fff;
   text-decoration: none;
@@ -279,7 +354,7 @@ section .signin .content .form .inputBox i {
 .signin .content .form .inputBox input[type="submit"] {
   padding: 10px;
   background: #000000;
-  color: #ffffff;
+  color: rgb(255, 255, 255);
   font-weight: 600;
   font-size: 1.35em;
   letter-spacing: 0.05em;

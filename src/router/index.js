@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import StudentAccount from '../views/StudentAccount.vue'
 import TeacherAccount from '../views/TeacherAccount.vue'
 import ManagerAccount from '../views/ManagerAccount.vue'
+import StudentCrAccount from '../views/StudentCrAccount.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -26,6 +27,11 @@ const router = createRouter({
       path: '/createManagerAcc',
       name: 'managerAcc',
       component: ManagerAccount
+    },
+    {
+      path: '/StudentCrAccount',
+      name: 'studentCrAcc',
+      component: StudentCrAccount
     },
   ]
 })

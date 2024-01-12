@@ -59,21 +59,22 @@ import Arrow from '@/components/Arrow.vue';
             <h2>Sign In</h2>
 
             <div class="form">
+              <span class="wrong text-[20px] w-[100%]" v-if="mistake">Your login or password is wrong!</span>
 
               <div class="inputBox">
 
-                <input type="text" class="text-[#FF4508]" required> <i>Username</i>
+                <input @input="mistake = false" type="text" v-model="login" class="text-[#FF4508]" required> <i>Username</i>
 
               </div>
 
               <div class="inputBox relative">
-                <input v-model="password" v-if="show == false"  class="text-[#FF4508]" type="password" required>
-                <input v-model="password" v-if="show"  class="text-[#FF4508]" type="text" required>
+                <input @input="mistake = false" v-model="password" v-if="show == false" class="text-[#FF4508]" type="password" required>
+                <input @input="mistake = false" v-model="password" v-if="show" class="text-[#FF4508]" type="text" required>
                 <div @click="show = !show" class="btn cursor-pointer absolute right-[15px]">
                   <img class="w-[20px]" v-if="show" src="../assets/show.png" alt="">
                   <img class="w-[20px]" v-if="show == false" src="../assets/eye.png" alt="">
                 </div>
-                <i>Password</i>   
+                <i>Password</i>
 
               </div>
 
@@ -83,7 +84,7 @@ import Arrow from '@/components/Arrow.vue';
 
               <div class="inputBox">
 
-                <input type="submit" value="Login">
+                <input @click="send" type="submit" value="Login">
 
               </div>
 
@@ -93,9 +94,11 @@ import Arrow from '@/components/Arrow.vue';
 
         </div>
 
-      </section> <!-- partial -->
+      </section>
 
-
+      <!-- <iframe
+        src="https://docs.google.com/forms/d/e/1FAIpQLSc0jSndBkJaM91lSBxA4lvrX1N8KieXHlNCKnGjMC2DvhQw7g/viewform?embedded=true"
+        width="640" height="617" frameborder="0" marginheight="0" marginwidth="0">Загрузка…</iframe> -->
 
     </div>
   </div>
@@ -108,19 +111,47 @@ export default {
   data() {
     return {
       password: '',
+      login: '',
+      results: [],
+      mistake: false,
+      Full_URL: '',
       show: false,
-
+      Sheet_ID: '1IjdP6V9SJXKPIMqOv-1o0NXjTMLkDQeo4xMD3iyJdMY',
+      Sheet_TITLE: 'Reg',
     };
   },
   components: {
   },
   mounted() {
+    this.Full_URL = 'https://docs.google.com/spreadsheets/d/' + this.Sheet_ID + '/gviz/tq?sheet=' + this.Sheet_TITLE
+    fetch(this.Full_URL)
+      .then(res => res.text())
+      .then(rep => {
+        let data = JSON.parse(rep.substr(47).slice(0, -2))
+        for (let i of data.table.rows) {
+          this.results.push({
+            login: i.c[3].v,
+            password: i.c[4].v,
+          })
 
+        }
+        console.log(this.results);
+
+      })
   },
-
   methods: {
-  },
-};
+    send() {
+      for(let i of this.results){
+        if(this.login !== i.login && this.password !== i.password){
+          this.mistake = true
+        }else{
+          alert('You are correct')
+        }
+      }
+    }
+
+  }
+}
 </script>
 
 <style scoped>
@@ -130,7 +161,14 @@ export default {
   font-size: 36px;
   border: none
 }
-.btn{
+.wrong{
+  background: none;
+  appearance: none;
+  transition: .3s;
+  width: 100%;
+}
+
+.btn {
   top: 50%;
   transform: translateY(-50%);
 }
@@ -148,6 +186,7 @@ export default {
 
 section {
   position: absolute;
+  transition: .3s;
   background: #000;
   width: 100vw;
   height: 100vh;
@@ -197,6 +236,7 @@ section .signin {
   position: absolute;
   width: 90%;
   background: #FF4508;
+  transition: .3s;
   z-index: 1000;
   top: 40%;
   left: 50%;
@@ -215,6 +255,7 @@ section .signin .content {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: .3s;
   flex-direction: column;
   gap: 40px;
 }
@@ -228,6 +269,7 @@ section .signin .content h2 {
 section .signin .content .form {
   width: 100%;
   display: flex;
+  transition: .3s;
   flex-direction: column;
   gap: 25px;
 }
@@ -249,21 +291,26 @@ section .signin .content .form .inputBox input {
   font-weight: 500;
   font-size: 1em;
 }
-.p-password-input{
+
+.p-password-input {
   font-size: 15px;
 }
-.p-inputtext .p-component .p-password-input:focus-visible{
+
+.p-inputtext .p-component .p-password-input:focus-visible {
   outline: none;
 }
-.p-icon{
+
+.p-icon {
   width: 25px;
   height: 25px;
 }
-section .signin .content .form .inputBox .inp[data-v-ae13ceef]{
+
+section .signin .content .form .inputBox .inp[data-v-ae13ceef] {
   width: 100%;
   height: 55px;
   padding: 0px !important;
 }
+
 section .signin .content .form .inputBox .inp {
   position: relative;
   width: 100%;
@@ -293,6 +340,7 @@ section .signin .content .form .inputBox i {
   font-size: 0.8em;
   color: #fff;
 }
+
 .signin .content .form .inputBox .inp:focus~i,
 .signin .content .form .inputBox .inp:valid~i {
   transform: translateY(-7.5px);
@@ -343,4 +391,5 @@ input[type="submit"]:active {
     width: calc(20vw - 2px);
     height: calc(20vw - 2px);
   }
-}</style>
+}
+</style>

@@ -78,7 +78,7 @@ import Arrow from '@/components/Arrow.vue';
 
               </div>
 
-              <div class="links"> <a href="#">Forgot Password</a> <a href="#">Signup</a>
+              <div class="links"> <a href="#">Forgot Password</a> <RouterLink to="/StudentCrAccount">Signup</RouterLink>
 
               </div>
 
@@ -130,8 +130,8 @@ export default {
         let data = JSON.parse(rep.substr(47).slice(0, -2))
         for (let i of data.table.rows) {
           this.results.push({
-            login: i.c[3].v,
-            password: i.c[4].v,
+            login: i.c[6].v,
+            password: i.c[7].v,
           })
 
         }

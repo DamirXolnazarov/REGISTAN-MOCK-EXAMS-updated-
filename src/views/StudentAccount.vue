@@ -114,8 +114,8 @@ export default {
       login: '',
       results: [],
       mistake: false,
-      Full_URL: '',
       show: false,
+      Full_URL: '',
       Sheet_ID: '1IjdP6V9SJXKPIMqOv-1o0NXjTMLkDQeo4xMD3iyJdMY',
       Sheet_TITLE: 'Reg',
     };
@@ -143,6 +143,8 @@ export default {
     send() {
       for(let i of this.results){
         if(this.login !== i.login && this.password !== i.password){
+          this.mistake = true
+        }else if(this.login !== i.login || this.password !== i.password){
           this.mistake = true
         }else{
           alert('You are correct')

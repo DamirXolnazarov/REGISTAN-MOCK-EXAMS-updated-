@@ -5,6 +5,17 @@ import Arrow from '@/components/Arrow.vue';
 
 <template>
   <div class="studentAcc">
+    <div v-if="showPopup" class="back fixed top-0 left-0 w-[100%] h-[100vh]">
+      <div class="animationFrame w-[100%] h-[100%] fixed top-0 left-0">
+        <div
+          class="animation_content px-[20px] flex flex-col justify-center items-center absolute bg-[white] w-[343px] h-[305px] rounded-[10px]">
+          <img class="checked w-[100px]" src="../assets/checked.png" alt="">
+          <span class="text-[#00FF1A] text-center text-[30px] font-black">You logged into your account
+            successfully!</span>
+        </div>
+      </div>
+
+    </div>
     <HeaderComp class="asd" textHeader="STUDENT" />
     <div class="login relative">
       <RouterLink to="/">
@@ -63,13 +74,16 @@ import Arrow from '@/components/Arrow.vue';
 
               <div class="inputBox">
 
-                <input @input="mistake = false" type="text" v-model="login" class="text-[#FF4508]" required> <i>Username</i>
+                <input @input="mistake = false" type="text" v-model="login" class="text-[#FF4508]" required>
+                <i>Username</i>
 
               </div>
 
               <div class="inputBox relative">
-                <input @input="mistake = false" v-model="password" v-if="show == false" class="text-[#FF4508]" type="password" required>
-                <input @input="mistake = false" v-model="password" v-if="show" class="text-[#FF4508]" type="text" required>
+                <input @input="mistake = false" v-model="password" v-if="show == false" class="text-[#FF4508]"
+                  type="password" required>
+                <input @input="mistake = false" v-model="password" v-if="show" class="text-[#FF4508]" type="text"
+                  required>
                 <div @click="show = !show" class="btn cursor-pointer absolute right-[15px]">
                   <img class="w-[20px]" v-if="show" src="../assets/show.png" alt="">
                   <img class="w-[20px]" v-if="show == false" src="../assets/eye.png" alt="">
@@ -78,7 +92,8 @@ import Arrow from '@/components/Arrow.vue';
 
               </div>
 
-              <div class="links"> <a href="#">Forgot Password</a> <RouterLink to="/StudentCrAccount">Signup</RouterLink>
+              <div class="links"> <a href="#">Forgot Password</a>
+                <RouterLink to="/StudentCrAccount">Signup</RouterLink>
 
               </div>
 
@@ -114,6 +129,7 @@ export default {
       login: '',
       results: [],
       mistake: false,
+      showPopup: false,
       show: false,
       Full_URL: '',
       Sheet_ID: '1IjdP6V9SJXKPIMqOv-1o0NXjTMLkDQeo4xMD3iyJdMY',
@@ -141,13 +157,20 @@ export default {
   },
   methods: {
     send() {
-      for(let i of this.results){
-        if(this.login !== i.login && this.password !== i.password){
-          this.mistake = true
-        }else if(this.login !== i.login || this.password !== i.password){
-          this.mistake = true
-        }else{
-          alert('You are correct')
+      for (let i of this.results) {
+        if (this.login == i.login && this.password == i.password) {
+          setTimeout(() => {
+            
+            this.showPopup = true
+          }, 700);
+          setTimeout(() => {
+            
+            window.location.pathname = '/StudentPage'
+          }, 5000);
+          window.localStorage.user = JSON.stringify({
+            login: this.login,
+            password: this.password,
+          })
         }
       }
     }
@@ -158,14 +181,59 @@ export default {
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
-input{
+
+input {
   color: #FF4508 !important;
 }
+@keyframes an{
+    0%{
+        transform: scale(0);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+.checked{
+    animation: an .3s;
+    animation-delay: 2s;
+}
+.back{
+    background-image: url('../assets/logo.png');
+    background-size: 34%;
+    z-index: 99999999 !important;
+}
+.animationFrame{
+   backdrop-filter: blur(7px);
+   animation-delay: 1.8s;
+   animation: an .3s;
+
+}
+.animation_content{
+   top: 50%;
+   left: 50%;
+   transform: translateX(-50%) translateY(-50%);
+}
+/* .success{
+  top: 50%;
+} */
+.backg {
+  z-index: 99999999999999 !important;
+  backdrop-filter: blur(8px);
+}
+
 .asd {
   font-size: 36px;
   border: none
 }
-.wrong{
+
+.success {
+  z-index: 99999999 !important;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.wrong {
   background: none;
   appearance: none;
   transition: .3s;
@@ -389,7 +457,8 @@ input[type="submit"]:active {
     height: calc(10vw - 2px);
   }
 }
-input[type='submit']{
+
+input[type='submit'] {
   color: white !important;
 }
 
@@ -398,5 +467,4 @@ input[type='submit']{
     width: calc(20vw - 2px);
     height: calc(20vw - 2px);
   }
-}
-</style>
+}</style>

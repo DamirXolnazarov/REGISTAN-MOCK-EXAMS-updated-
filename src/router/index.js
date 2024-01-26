@@ -5,7 +5,6 @@ import TeacherAccount from '../views/TeacherAccount.vue'
 import ManagerAccount from '../views/ManagerAccount.vue'
 import StudentCrAccount from '../views/StudentCrAccount.vue'
 import StudentPage from '../views/StudentPage.vue'
-import Animation from '../views/Animation.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -40,11 +39,7 @@ const router = createRouter({
       name: 'StudentPage',
       component: StudentPage
     },
-    {
-      path: '/Animation',
-      name: 'Animation',
-      component: Animation
-    },
+  
   ]
 })
 

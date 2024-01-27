@@ -18,8 +18,31 @@
                 </div>
             </div>
         </div>
-        <div class="bottomMenu">
-            
+        <div class="bottomMenu h-[80px] w-[100%] px-[10px] fixed bottom-[0] left-[0]">
+            <div class="flex flex-nowrap px-[15px] justify-between"><img class="first w-[150px]" src="../assets/Vector 4.png" alt=""><img class="absolute orta top-[-8.5px]" src="../assets/Vector 6.png" alt=""><img class="w-[150px]" src="../assets/Vector 4.png" alt=""></div>
+           <div class="categories px-[10px] flex flex-row justify-between items-center">
+            <div class="news flex flex-col justify-between items-center">
+                <img src="../assets/news.png" alt="">
+                <span class="mt-[5px] text-[13px] font-medium">News</span>
+            </div>
+            <div class="level mr-[40px] flex flex-col justify-between items-center">
+                <img src="../assets/test.png" alt="">
+                <span class="mt-[5px] text-[13px] font-medium">Level Test</span>
+            </div>
+            <div class="Tips absolute top-[0] flex flex-col justify-between items-center">
+                <img class="absolute top-[38px] left-[60px]" src="../assets/lamp.png" alt="">
+                <img src="../assets/tips.png" class="w-[45px]" alt="">
+                <span class="mt-[5px] text-[15px] font-black">IELTS TIPS</span>
+            </div>
+            <div class="games ml-[40px] flex flex-col justify-between items-center">
+                <img src="../assets/games.png" alt="">
+                <span class="mt-[5px] text-[13px] font-medium">Games</span>
+            </div>
+            <div class="profile flex flex-col justify-between items-center">
+                <img src="../assets/profile.png" alt="">
+                <span class="mt-[5px] text-[13px] font-medium">Profile</span>
+            </div>
+           </div>
 
         </div>
 
@@ -85,5 +108,23 @@ export default {
 .coinSystem {
     background-image: url('../assets/coin.png');
     background-size: cover;
+}
+.Tips{
+    left: 50%;
+    transform: translateX(-50%);
+}
+.first{
+    /* transform: rotate(360deg); */
+    transform: rotateY(180deg);
+}
+.line{
+    height: 0.5px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: black;
+}
+.orta{
+    left: 50%;
+    transform: translateX(-50%);
 }
 </style>

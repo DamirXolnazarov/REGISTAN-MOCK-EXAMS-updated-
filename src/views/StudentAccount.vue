@@ -164,8 +164,7 @@ export default {
             this.showPopup = true
           }, 700);
           setTimeout(() => {
-            
-            window.location.pathname = '/StudentPage'
+            this.$router.push('/StudentPage')
           }, 5000);
           window.localStorage.user = JSON.stringify({
             login: this.login,

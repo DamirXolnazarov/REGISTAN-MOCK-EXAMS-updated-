@@ -6,6 +6,7 @@ import ManagerAccount from '../views/ManagerAccount.vue'
 import StudentCrAccount from '../views/StudentCrAccount.vue'
 import StudentPage from '../views/StudentPage.vue'
 import Profile from '../views/Profile.vue'
+import LevelTest from '../views/LevelTest.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -44,6 +45,11 @@ const router = createRouter({
       path: '/Profile',
       name: 'Profile',
       component: Profile
+    },
+    {
+      path: '/LevelTest',
+      name: 'LevelTest',
+      component: LevelTest
     },
   
   ]

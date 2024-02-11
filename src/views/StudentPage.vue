@@ -25,13 +25,16 @@
                     <button class="bg-[#FF4508] rounded-[21px] w-[215px] h-[32px] text-[white]">Register</button>
                 </div>
                 <div class="video h-[310px] rounded-[21px] bg-[white] mt-[20px] w-[100%]">
-                    <iframe width="100%" height="250px" class="rounded-[21px]" src="https://www.youtube.com/embed/U1xlFbooiyM"
+                    <iframe width="100%" height="250px" class="rounded-[21px]"
+                        src="https://www.youtube.com/embed/U1xlFbooiyM"
                         title="Bu ikki kitobni o&#39;qimagan talaba, talaba emas!" frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         allowfullscreen></iframe>
-                        <span class="mt-[15px] text-center flex flex-row justify-center items-center">⚡️ Watch this motivational video ⚡️</span>
+                    <span class="mt-[15px] text-center flex flex-row justify-center items-center">⚡️ Watch this motivational
+                        video ⚡️</span>
                 </div>
             </div>
+     
         </div>
         <div class="bottomMenu h-[140px] w-[100%] px-[10px] fixed bottom-[0] left-[0]">
             <div class="categories px-[10px] pt-[40px] flex flex-row justify-between items-center">
@@ -39,10 +42,12 @@
                     <img src="../assets/news.png" alt="">
                     <span class="mt-[5px] text-[13px] font-medium">News</span>
                 </div>
+                <RouterLink to="/LevelTest">
                 <div class="level mr-[40px] flex flex-col justify-between items-center">
                     <img src="../assets/test.png" alt="">
                     <span class="mt-[5px] text-[13px] font-medium">Level Test</span>
                 </div>
+            </RouterLink>
                 <div class="Tips absolute top-[10px] flex flex-col justify-between items-center">
                     <img class="absolute top-[38px] left-[60px]" src="../assets/lamp.png" alt="">
                     <img src="../assets/tips.png" class="w-[45px]" alt="">
@@ -52,10 +57,12 @@
                     <img src="../assets/games.png" alt="">
                     <span class="mt-[5px] text-[13px] font-medium">Games</span>
                 </div>
-                <RouterLink to="/Profile"><div class="profile flex flex-col justify-between items-center">
-                    <img src="../assets/profile.png" alt="">
-                    <span class="mt-[5px] text-[13px] font-medium">Profile</span>
-                </div></RouterLink>
+                <RouterLink to="/Profile">
+                    <div class="profile flex flex-col justify-between items-center">
+                        <img src="../assets/profile.png" alt="">
+                        <span class="mt-[5px] text-[13px] font-medium">Profile</span>
+                    </div>
+                </RouterLink>
             </div>
 
         </div>
@@ -118,7 +125,8 @@ export default {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 22px;
 }
-.video{
+
+.video {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 

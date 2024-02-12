@@ -102,6 +102,7 @@ export default {
                             login: i.c[6].v,
                             password: i.c[7].v,
                         })
+                        window.localStorage.account = JSON.stringify(this.Account[0])
                     }
 
                 }

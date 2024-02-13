@@ -11,22 +11,26 @@
             <button @click="TestFinished" class="rounded-[15px] my-[15px] w-[70%] h-[50px] text-[white] bg-[#FF4C00]">I have
                 finished the test!</button>
         </div>
-        <div class="testResultShow" v-if="IsOver == false">
+        <div class="testResultShow py-[25px] px-[25px] flex flex-col items-center" v-if="IsOver == false">
 
             <svg width="200" height="200" viewBox="-25 -25 250 250" version="1.1" xmlns="http://www.w3.org/2000/svg"
                 style="transform:rotate(-90deg)">
                 <circle r="90" cx="100" cy="100" fill="transparent" stroke="#e0e0e0" stroke-width="16px"
-                    stroke-dasharray="565.48px" stroke-dashoffset="0"></circle>
+                    stroke-dasharray="565px" stroke-dashoffset="0"></circle>
                 <circle r="90" cx="100" cy="100" stroke="#00ffff" stroke-width="16px" stroke-linecap="round"
-                    stroke-dashoffset="164px" fill="transparent" stroke-dasharray="565.48px"></circle>
+                    :stroke-dashoffset="shadedArea" fill="transparent" stroke-dasharray="565.48px"></circle>
                 <text x="72px" y="118px" fill="#00ffff" font-size="52px" font-weight="bold"
                     style="transform:rotate(90deg) translate(0px, -196px)">{{ this.score.cefr }}</text>
             </svg>
 
-            <span>{{ score.points }}</span>
-            <span>{{ score.level }}</span>
+            <span>Correct answers✅: </span>
+            <span class="text-[20px] text-[lime]">{{ score.points }}</span>
+            <span>Cefr Level:</span>
+            <span class="text-[30px] text-[#FF4C00]">{{ score.level }}</span>
         </div>
+        <div class="table">
 
+        </div>
     </div>
 </template>
 
@@ -38,11 +42,39 @@ export default {
         return {
             value: 0,
             IsOver: true,
+            shadedArea: 0,
             Account: [],
             score: {},
             Sheet_ID: '1nCN5mDFikmqzM8CCY5KR2VAOkb2lWlo2uQ9c22X9giQ',
             Sheet_TITLE: 'English level test',
             Full_URL: '',
+            Descriptions: [
+                {
+                    level: 'A1 (Beginner)',
+                    description: 'At this level, learners can understand and use basic expressions and phrases related to personal information, daily routines, and simple interactions. They can introduce themselves and ask and answer simple questions about familiar topics.',
+                    testRange: '0-21',
+                },
+                {
+                    level: 'A2 (Elementary)',
+                    description: 'At the A2 level, learners can understand and use commonly used expressions and phrases related to personal and family information, shopping, and immediate surroundings. They can communicate in simple and routine tasks requiring a direct exchange of information.',
+                    testRange: '21-25',
+                },
+                {
+                    level: 'B1 (Intermediate)',
+                    description: 'At the B1 level, learners can understand the main points of clear and standard speech on familiar topics. They can handle most situations that may arise while traveling in an area where the language is spoken. They can produce simple and coherent texts on familiar topics and describe experiences, events, and dreams.',
+                    testRange: '26-30',
+                },
+                {
+                    level: 'B2 (Upper Intermediate)',
+                    description: 'At the B2 level, learners can understand the main ideas of complex texts on both concrete and abstract topics. They can interact with a degree of fluency and spontaneity that makes regular interaction with native speakers possible. They can produce clear and detailed texts on a wide range of subjects and explain viewpoints on various topics.',
+                    testRange: '31-35',
+                },
+                {
+                    level: 'C1 (Advanced)',
+                    description: 'At the C1 level, learners can understand a wide range of demanding, longer texts, and recognize implicit meaning.They can express themselves fluently and spontaneously without much obvious searching for expressions. They can use language flexibly and effectively for social, academic, and professional purposes. ',
+                    testRange: '36-40',
+                },
+            ]
         };
     },
 
@@ -102,6 +134,8 @@ export default {
     methods: {
         TestFinished() {
             this.IsOver = false
+            this.shadedArea = (565 - (565 * this.score.points) / 40) + 'px'
+            console.log(this.shadedArea);
         }
     },
 };
@@ -116,6 +150,13 @@ export default {
     background: #FF4C00;
 }
 
+.testResultShow {
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 21px;
+}
+
 .progress::after {
     background: #FF4C00;
-}</style>
+}
+</style>

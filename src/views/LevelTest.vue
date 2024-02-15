@@ -1,5 +1,6 @@
 <template>
     <div class="levelTest pt-[20px] px-[20px]">
+        <RouterLink to="/StudentPage"><div class="home cursor-pointer absolute"><img class="w-[40px]" src="../assets/home.png" alt=""></div></RouterLink>
         <span class="text-[26px] font-black text-center flex flex-row justify-center w-[100%]">Level Test</span>
         <div v-if="IsOver" class="progressBar bg-[#fff] sticky top-[0] h-[70px] flex flex-row items-center justify-center">
             <progress class="progress progress-error w-[100%]" :value="value" max="100"></progress>
@@ -28,8 +29,32 @@
             <span>Cefr Level:</span>
             <span class="text-[30px] text-[#FF4C00]">{{ score.level }}</span>
         </div>
-        <div class="table">
-
+        <div v-if="IsOver == false" class="table mt-[30px]">
+          <table>
+            <th class="text-center title text-[16px] text-[white] bg-[#ED7D31]">CEFR Level</th>
+            <th class="text-center title text-[16px] text-[white] bg-[#ED7D31]">Description</th>
+            <th class="text-center title text-[16px] text-[white] bg-[#ED7D31]">Test Results</th>
+            <tr></tr>
+            <td class="bg-[#FBE4D5]">{{ this.Descriptions[0].level }}</td>
+            <td class="bg-[#FBE4D5]">{{ this.Descriptions[0].description }}</td>
+            <td class="bg-[#FBE4D5]">{{ this.Descriptions[0].testRange }}</td>
+            <tr></tr>
+            <td>{{ this.Descriptions[1].level }}</td>
+            <td>{{ this.Descriptions[1].description }}</td>
+            <td>{{ this.Descriptions[1].testRange }}</td>
+            <tr></tr>
+            <td class="bg-[#FBE4D5]">{{ this.Descriptions[2].level }}</td>
+            <td class="bg-[#FBE4D5]">{{ this.Descriptions[2].description }}</td>
+            <td class="bg-[#FBE4D5]">{{ this.Descriptions[2].testRange }}</td>
+            <tr></tr>
+            <td>{{ this.Descriptions[3].level }}</td>
+            <td>{{ this.Descriptions[3].description }}</td>
+            <td>{{ this.Descriptions[3].testRange }}</td>
+            <tr></tr>
+            <td class="bg-[#FBE4D5]">{{ this.Descriptions[4].level }}</td>
+            <td class="bg-[#FBE4D5]">{{ this.Descriptions[4].description }}</td>
+            <td class="bg-[#FBE4D5]">{{ this.Descriptions[4].testRange }}</td>
+          </table>
         </div>
     </div>
 </template>
@@ -128,6 +153,7 @@ export default {
                     }
                 }
             })
+           
 
     },
 
@@ -136,6 +162,15 @@ export default {
             this.IsOver = false
             this.shadedArea = (565 - (565 * this.score.points) / 40) + 'px'
             console.log(this.shadedArea);
+            let levels = document.getElementsByTagName('td')
+            for(let i = 0; i < levels.length ; i++){
+                if(this.score.cefr + ' ' + '(' + this.score.level + ')' == levels[i].innerHTML){
+                    levels[i].classList = 'selected'
+                    levels[i + 1].classList = 'selected'
+                    levels[i + 2].classList = 'selected'
+                }
+            }
+            console.log(levels);
         }
     },
 };
@@ -145,7 +180,14 @@ export default {
 .progress {
     transition: .3s;
 }
-
+table th{
+    border: 1px solid #F4B083;
+}
+table td{
+    border: 1px solid #F4B083;
+    font-size: 12px;
+    text-align: center;
+}
 .progress::before {
     background: #FF4C00;
 }
@@ -155,8 +197,14 @@ export default {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 21px;
 }
-
+.title{
+    font-weight: 100;
+}
 .progress::after {
     background: #FF4C00;
+}
+.selected{
+    border: 2px solid red;
+    box-shadow: rgb(255, 74, 74) 3px 3px 6px 0px inset, rgba(255, 38, 38, 0.5) -3px -3px 6px 1px inset;
 }
 </style>

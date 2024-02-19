@@ -7,6 +7,8 @@ import StudentCrAccount from '../views/StudentCrAccount.vue'
 import StudentPage from '../views/StudentPage.vue'
 import Profile from '../views/Profile.vue'
 import LevelTest from '../views/LevelTest.vue'
+import Games from '../views/Games.vue'
+import News from '../views/News.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -50,6 +52,16 @@ const router = createRouter({
       path: '/LevelTest',
       name: 'LevelTest',
       component: LevelTest
+    },
+    {
+      path: '/Games',
+      name: 'Games',
+      component: Games
+    },
+    {
+      path: '/News',
+      name: 'News',
+      component: News
     },
     
   

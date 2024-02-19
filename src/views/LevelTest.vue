@@ -1,6 +1,6 @@
 <template>
     <div class="levelTest pt-[20px] px-[20px]">
-        <RouterLink to="/StudentPage"><div class="home cursor-pointer absolute"><img class="w-[40px]" src="../assets/home.png" alt=""></div></RouterLink>
+      
         <span class="text-[26px] font-black text-center flex flex-row justify-center w-[100%]">Level Test</span>
         <div v-if="IsOver" class="progressBar bg-[#fff] sticky top-[0] h-[70px] flex flex-row items-center justify-center">
             <progress class="progress progress-error w-[100%]" :value="value" max="100"></progress>

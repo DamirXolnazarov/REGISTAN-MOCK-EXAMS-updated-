@@ -1,5 +1,6 @@
 <template>
     <div class="profilePage">
+        <RouterLink to="/StudentPage"><div class="home cursor-pointer top-[25px] left-[25px] absolute"><img class="w-[40px]" src="../assets/home.png" alt=""></div></RouterLink>
         <div class="content pt-[20px] px-[20px]">
             <div class="title w-[100%] flex flex-col items-center justify-between">
                 <span class="text-[40px] font-black">Damirbek</span>
@@ -18,7 +19,7 @@
             </div>
         </div>
         
-        <div class="bottomMenu h-[140px] w-[100%] px-[10px] fixed bottom-[0] left-[0]">
+        <div class="bottomMenu h-[100px] w-[100%] px-[10px] fixed bottom-[0] left-[0]">
             <div class="categories px-[10px] pt-[40px] flex flex-row justify-between items-center">
                 <div class="news flex flex-col justify-between items-center">
                     <img src="../assets/news.png" alt="">

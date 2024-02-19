@@ -36,7 +36,7 @@
             </div>
      
         </div>
-        <div class="bottomMenu h-[140px] w-[100%] px-[10px] fixed bottom-[0] left-[0]">
+        <div class="bottomMenu h-[100px] w-[100%] px-[10px] fixed bottom-[0] left-[0]">
             <div class="categories px-[10px] pt-[40px] flex flex-row justify-between items-center">
                 <div class="news flex flex-col justify-between items-center">
                     <img src="../assets/news.png" alt="">

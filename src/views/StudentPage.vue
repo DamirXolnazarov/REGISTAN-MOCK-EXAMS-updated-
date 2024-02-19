@@ -38,10 +38,12 @@
         </div>
         <div class="bottomMenu h-[100px] w-[100%] px-[10px] fixed bottom-[0] left-[0]">
             <div class="categories px-[10px] pt-[40px] flex flex-row justify-between items-center">
+                <RouterLink to="/News">
                 <div class="news flex flex-col justify-between items-center">
                     <img src="../assets/news.png" alt="">
                     <span class="mt-[5px] text-[13px] font-medium">News</span>
                 </div>
+                </RouterLink>
                 <RouterLink to="/LevelTest">
                 <div class="level mr-[40px] flex flex-col justify-between items-center">
                     <img src="../assets/test.png" alt="">

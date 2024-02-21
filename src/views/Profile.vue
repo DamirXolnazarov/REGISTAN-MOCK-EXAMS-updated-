@@ -7,9 +7,9 @@
                 <span class="text-[24px] font-semibold">Kholnazarov</span>
             </div>
             <div class="categories mt-[50px] flex flex-col items-center justify-between w-[100%] h-[220px] px-[15px]">
-                <div class=" px-[20px] text-[#939393] w-[100%] h-[65px] flex flex-row justify-between items-center">
+                <RouterLink class="w-[100%] h-[65px]" to="/PersonalDetails"><div class="px-[20px] text-[#939393] w-[100%] h-[65px] flex flex-row justify-between items-center">
                     <span>Personal details</span><img src="../assets/arrow.png" alt="">
-                </div>
+                </div></RouterLink>
                 <div class="Passwords px-[20px] text-[#939393] w-[100%] h-[65px] flex flex-row justify-between items-center">
                     <span>Passwords & Security</span><img src="../assets/arrow.png" alt="">
                 </div>

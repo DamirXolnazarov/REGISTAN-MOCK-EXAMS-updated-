@@ -50,11 +50,13 @@
                     <span class="mt-[5px] text-[13px] font-medium">Level Test</span>
                 </div>
             </RouterLink>
+            <RouterLink to="/IELTS_tips">
                 <div class="Tips absolute top-[10px] flex flex-col justify-between items-center">
                     <img class="absolute top-[38px] left-[60px]" src="../assets/lamp.png" alt="">
                     <img src="../assets/tips.png" class="w-[45px]" alt="">
                     <span class="mt-[5px] text-[15px] font-black">IELTS TIPS</span>
                 </div>
+            </RouterLink>
                 <div class="games ml-[40px] flex flex-col justify-between items-center">
                     <img src="../assets/games.png" alt="">
                     <span class="mt-[5px] text-[13px] font-medium">Games</span>

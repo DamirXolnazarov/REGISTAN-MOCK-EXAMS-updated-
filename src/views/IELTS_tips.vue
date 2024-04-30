@@ -1,23 +1,84 @@
 <template>
     <div class="ieltsTips">
-        <div class="frame w-[100%] flex flex-row justify-center items-center h-[500px]" ref="container">
-            <div class="Main_cirlce flex flex-col items-center justify-center w-[80%] h-[62%] rounded-[50%]">
-                <span class="text-[red] font-black text-[55px]">IELTS</span>
-                <span class="text-[white] font-black text-[55px]">TIPS</span>
+        <span class="text-[36px] my-[25px] font-black text-center flex flex-row justify-center w-[100%]">IELTS
+            TIPS</span>
+        <div class="containers mt-[70px]">
+            <div class="listening relative w-[100%] flex flex-row justify-center">
+                <div class="top">
+                    <div
+                        class="square h-[80px] flex flex-row justify-center items-center top-[-40px] w-[110px] bg-[#E86320] absolute">
+                        <span class="text-[60px] text-[white]">01</span>
+                    </div>
+                    <div class="triangle top-[-40px]"></div>
+                </div>
+                <div class="main w-[75%] rounded-[70px] pt-[45px] pl-[15px] h-[225px] bg-[#F4AD15]">
+                    <div class="left_side flex flex-col">
+                        <span class="text-[#E86320] text-[25px]">LISTENING</span>
+                        <span class="text-[white] text-[22px]">Record yourself and your lesson.
+                            Remember your mistakes.
+                        </span>
+                    </div>
+                </div>
             </div>
-            <div class="writing absolute w-[70px] h-[70px] rounded-[50%] top-[90px] left-[60px]"
-                @mousemove="moveShape($event, 'shape1')" ref="shape1"></div>
-            <div class="yellowCircle absolute w-[50px] bg-[#FAFF00] h-[50px] rounded-[50%] top-[190px] left-[6px]"
-                @mousemove="moveShape($event, 'shape2')" ref="shape2"></div>
-            <div class="speaking absolute w-[30px] h-[30px] rounded-[50%] top-[260px] left-[60px]"></div>
-            <div class="triangular top-[335px] left-[20px]"></div>
-            <div class="bigGreen absolute bg-[#00FF29] w-[120px] h-[120px] top-[330px] left-[85px] rounded-[50%]"></div>
-            <div class="purple absolute bg-[#AD00FF] w-[50px] h-[50px] top-[360px] right-[70px] rounded-[50%]"></div>
-            <div class="reading absolute w-[40px] h-[40px] rounded-[50%] top-[280px] right-[50px]"></div>
-            <div class="listening absolute w-[70px] h-[70px] rounded-[50%] top-[180px] right-[10px]"></div>
-            <div class="square bg-[#FFB800] w-[50px] h-[50px] absolute top-[100px] right-[50px]"></div>
-            <div class=" absolute redCircle bg-[red] rounded-[50%] w-[50px] h-[50px] right-[140px] top-[60px]"></div>
+            <hr class="firstOne">
+            <div class="reading relative w-[100%] mt-[80px] flex flex-row justify-center">
+                <div class="top">
+                    <div
+                        class="square h-[80px] flex flex-row justify-center items-center top-[-40px] w-[110px] bg-[#23B7B5] absolute">
+                        <span class="text-[60px] text-[white]">02</span>
+                    </div>
+                    <div class="triangle1 top-[-40px]"></div>
+                </div>
+                <div class="main w-[75%] rounded-[70px] pt-[45px] pl-[15px] h-[200px] bg-[#53BFC8]">
+                    <div class="left_side flex flex-col">
+                        <span class="text-[#007977] text-[25px]">READING</span>
+                        <span class="text-[white] text-[22px]">Read a lot.
+                            Perform test analysis.
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="secondOne"></div>
+            <div class="writing relative w-[100%] mt-[80px] flex flex-row justify-center">
+                <div class="top">
+                    <div
+                        class="square h-[80px] flex flex-row justify-center items-center top-[-40px] w-[110px] bg-[#03647B] absolute">
+                        <span class="text-[60px] text-[white]">03</span>
+                    </div>
+                    <div class="triangle2 top-[-40px]"></div>
+                </div>
+                <div class="main w-[75%] rounded-[70px] pt-[45px] pl-[15px] h-[225px] bg-[#178FAA]">
+                    <div class="left_side flex flex-col">
+                        <span class="text-[#03647B] text-[25px]">WRITING</span>
+                        <span class="text-[white] text-[22px]">Work on your vocabulary.
+                            Inculcate the words your learned in the sentences.
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="thirdOne"></div>
+            <div class="speaking mt-[80px] relative w-[100%] flex flex-row justify-center">
+                <div class="top">
+                    <div
+                        class="square h-[80px] flex flex-row justify-center items-center top-[-40px] w-[110px] bg-[#CD3735] absolute">
+                        <span class="text-[60px] text-[white]">04</span>
+                    </div>
+                    <div class="triangle3 top-[-40px]"></div>
+                </div>
+                <div class="main w-[75%] rounded-[70px] pt-[45px] pl-[15px] h-[225px] bg-[#E9584A]">
+                    <div class="left_side flex flex-col">
+                        <span class="text-[#CD3735] text-[25px]">SPEAKING</span>
+                        <span class="text-[white] text-[22px]">Converse in English.
+                            Practice speaking in front of the mirror.
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="fourthOne"></div>
         </div>
+        <br>
+        <br>
+        <br>
     </div>
 </template>
 
@@ -59,97 +120,93 @@ export default {
     },
 
     mounted() {
-        this.containerSize = {
-            width: this.$refs.container.offsetWidth,
-            height: this.$refs.container.offsetHeight
-        };
+
     },
 
     methods: {
-        moveShape(event, shapeClass) {
-      const mouseX = event.clientX;
-      const mouseY = event.clientY;
 
-      const shape = this.$refs[shapeClass];
-      const shapeX = shape.offsetLeft + shape.offsetWidth / 2;
-      const shapeY = shape.offsetTop + shape.offsetHeight / 2;
-
-      const dx = mouseX - shapeX;
-      const dy = mouseY - shapeY;
-
-      const distance = Math.sqrt(dx * dx + dy * dy);
-      const maxDistance = 100; // Adjust this value for elasticity strength
-
-      if (distance < maxDistance) {
-        const newX = shapeX + dx * 0.1;
-        const newY = shapeY + dy * 0.1;
-        shape.style.left = `${newX - shape.offsetWidth / 2}px`;
-        shape.style.top = `${newY - shape.offsetHeight / 2}px`;
-      }
-    }
     },
 };
 </script>
 
 <style scoped>
-.Main_cirlce {
-    background-image: url('../assets/background.png');
-    background-size: cover;
-    font-weight: 900;
-
+.triangle {
+    width: 0;
+    height: 0;
+    left: 163px;
+    border-top: 40px solid transparent;
+    position: absolute;
+    border-left: 80px solid #E86320;
+    border-bottom: 40px solid transparent;
+}
+.triangle1 {
+    width: 0;
+    height: 0;
+    left: 163px;
+    border-top: 40px solid transparent;
+    position: absolute;
+    border-left: 80px solid #23B7B5;
+    border-bottom: 40px solid transparent;
+}
+.triangle2 {
+    width: 0;
+    height: 0;
+    left: 163px;
+    border-top: 40px solid transparent;
+    position: absolute;
+    border-left: 80px solid #03647B;
+    border-bottom: 40px solid transparent;
+}
+.triangle3 {
+    width: 0;
+    height: 0;
+    left: 163px;
+    border-top: 40px solid transparent;
+    position: absolute;
+    border-left: 80px solid #CD3735;
+    border-bottom: 40px solid transparent;
 }
 
-.Main_cirlce span {
-    font-weight: 800;
-    font-family: Arial, Helvetica, sans-serif;
+
+.main {
+    border-top-left-radius: 0px;
 }
 
 .square {
-    transform: rotate(-16deg);
+    border-top-left-radius: 40px;
 }
 
-.writing {
-    background-image: url('../assets/writing icon1.png');
-    background-size: cover;
-    transition: all 0.3s ease-in-out;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+.firstOne{
+width: 2px;
+position: absolute;
+height: 65px;
+left: 50%;
+letter-spacing: 4px; 
+border: dotted 1px #E86320;
 }
-.writing:hover{
-    transform: scale(1.1);
+.secondOne{
+width: 2px;
+position: absolute;
+height: 65px;
+left: 50%;
+letter-spacing: 4px; 
+border: dotted 1px #23B7B5;
 }
-.listening {
-    background-image: url('../assets/listening icon1.png');
-    background-size: cover;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+.thirdOne{
+width: 2px;
+position: absolute;
+height: 65px;
+left: 50%;
+letter-spacing: 4px; 
+border: dotted 1px #03647B;
 }
-
-.reading {
-    background-image: url('../assets/reading icon.png');
-    background-size: cover;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-}
-
-.speaking {
-    background-image: url('../assets/speaking icon.png');
-    background-size: cover;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-}
-
-.yellowCircle {
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-    transition: all 0.3s ease-in-out;
-}
-.yellowCircle:hover{
-    transform: scale(1.1);
+.fourthOne{
+width: 2px;
+position: absolute;
+height: 65px;
+left: 50%;
+letter-spacing: 4px; 
+border: dotted 1px #CD3735;
 }
 
-.triangular {
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-left: 25px solid transparent;
-    border-right: 25px solid transparent;
-    border-bottom: 45px solid #1400FF;
-    transform: rotate(56.27deg);
-
-}</style>
+</style>

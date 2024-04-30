@@ -75,6 +75,7 @@ const router = createRouter({
       name: 'PersonalDetails',
       component: PersonalDetails
     },
+  
     
   
   ]

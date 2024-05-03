@@ -11,6 +11,10 @@ import Games from '../views/Games.vue'
 import News from '../views/News.vue'
 import IELTS_tips from '../views/IELTS_tips.vue'
 import PersonalDetails from '../views/PersonalDetails.vue'
+import ListeningTips from '../views/ListeningTips.vue'
+import ReadingTips from '../views/ReadingTips.vue'
+import SpeakingTips from '../views/SpeakingTips.vue'
+import WritingTips from '../views/WritingTips.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -74,6 +78,26 @@ const router = createRouter({
       path: '/PersonalDetails',
       name: 'PersonalDetails',
       component: PersonalDetails
+    },
+    {
+      path: '/listeningTips',
+      name: 'ListeningTips',
+      component: ListeningTips
+    },
+    {
+      path: '/readingTips',
+      name: 'ReadingTips',
+      component: ReadingTips
+    },
+    {
+      path: '/speakingTips',
+      name: 'SpeakingTips',
+      component: SpeakingTips
+    },
+    {
+      path: '/writingTips',
+      name: 'WritingTips',
+      component: WritingTips
     },
   
     

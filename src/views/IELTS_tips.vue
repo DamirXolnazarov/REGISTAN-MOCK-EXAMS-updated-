@@ -2,8 +2,12 @@
     <div class="ieltsTips">
         <span class="text-[36px] my-[25px] font-black text-center flex flex-row justify-center w-[100%]">IELTS
             TIPS</span>
+            <RouterLink to="/StudentPage">
+            <div class="home cursor-pointer top-[35px] left-[25px] absolute"><img class="w-[40px]" src="../assets/home.png"
+                    alt=""></div>
+        </RouterLink>
         <div class="containers mt-[70px]">
-            <div class="listening relative w-[100%] flex flex-row justify-center">
+            <RouterLink to="/listeningTips"><div class="listening relative w-[100%] flex flex-row justify-center">
                 <div class="top">
                     <div
                         class="square h-[80px] flex flex-row justify-center items-center top-[-40px] w-[110px] bg-[#E86320] absolute">
@@ -19,9 +23,9 @@
                         </span>
                     </div>
                 </div>
-            </div>
+            </div></RouterLink>
             <hr class="firstOne">
-            <div class="reading relative w-[100%] mt-[80px] flex flex-row justify-center">
+            <RouterLink to="/readingTips"><div class="reading relative w-[100%] mt-[80px] flex flex-row justify-center">
                 <div class="top">
                     <div
                         class="square h-[80px] flex flex-row justify-center items-center top-[-40px] w-[110px] bg-[#23B7B5] absolute">
@@ -37,9 +41,9 @@
                         </span>
                     </div>
                 </div>
-            </div>
+            </div></RouterLink>
             <div class="secondOne"></div>
-            <div class="writing relative w-[100%] mt-[80px] flex flex-row justify-center">
+            <RouterLink to="/writingTips"><div class="writing relative w-[100%] mt-[80px] flex flex-row justify-center">
                 <div class="top">
                     <div
                         class="square h-[80px] flex flex-row justify-center items-center top-[-40px] w-[110px] bg-[#03647B] absolute">
@@ -55,9 +59,9 @@
                         </span>
                     </div>
                 </div>
-            </div>
+            </div></RouterLink>
             <div class="thirdOne"></div>
-            <div class="speaking mt-[80px] relative w-[100%] flex flex-row justify-center">
+            <RouterLink to="/speakingTips"><div class="speaking mt-[80px] relative w-[100%] flex flex-row justify-center">
                 <div class="top">
                     <div
                         class="square h-[80px] flex flex-row justify-center items-center top-[-40px] w-[110px] bg-[#CD3735] absolute">
@@ -73,7 +77,7 @@
                         </span>
                     </div>
                 </div>
-            </div>
+            </div></RouterLink>
             <div class="fourthOne"></div>
         </div>
         <br>

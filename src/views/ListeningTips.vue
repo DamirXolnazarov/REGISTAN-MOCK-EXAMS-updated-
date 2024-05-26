@@ -4,7 +4,7 @@
     <span class="text-[36px] my-[25px] font-black text-center flex flex-row justify-center w-[100%]">Listening <span
         class="text-[#FAFF00]">TIPS</span></span>
     <RouterLink to="/IELTS_tips">
-      <div class="home cursor-pointer top-[35px] left-[25px] absolute"><img class="w-[40px]" src="../assets/home.png"
+      <div class="home cursor-pointer top-[35px] left-[25px] absolute"><img class="w-[40px] rotate-[180deg]" src="../assets/arrow.png"
           alt=""></div>
     </RouterLink>
       <div class="main px-[25px]">

@@ -21,23 +21,25 @@
         
         <div class="bottomMenu h-[100px] w-[100%] px-[10px] fixed bottom-[0] left-[0]">
             <div class="categories px-[10px] pt-[40px] flex flex-row justify-between items-center">
+                <RouterLink to="/News">
                 <div class="news flex flex-col justify-between items-center">
                     <img src="../assets/news.png" alt="">
                     <span class="mt-[5px] text-[13px] font-medium">News</span>
-                </div>
+                </div></RouterLink><RouterLink to="/LevelTest">
                 <div class="level mr-[40px] flex flex-col justify-between items-center">
                     <img src="../assets/test.png" alt="">
                     <span class="mt-[5px] text-[13px] font-medium">Level Test</span>
-                </div>
+                </div></RouterLink><RouterLink to="/IELTS_Tips">
                 <div class="Tips absolute top-[10px] flex flex-col justify-between items-center">
                     <img class="absolute top-[38px] left-[60px]" src="../assets/lamp.png" alt="">
                     <img src="../assets/tips.png" class="w-[45px]" alt="">
                     <span class="mt-[5px] text-[15px] font-black">IELTS TIPS</span>
-                </div>
+                </div></RouterLink>
+                <RouterLink to="/Games">
                 <div class="games ml-[40px] flex flex-col justify-between items-center">
                     <img src="../assets/games.png" alt="">
                     <span class="mt-[5px] text-[13px] font-medium">Games</span>
-                </div>
+                </div></RouterLink>
                 <RouterLink to="/Profile"><div class="profile relative flex flex-col justify-between items-center">
                     <div class="filter absolute w-[189%] top-[-12px] h-[150%] bg-[#FF4508] opacity-[35%]"></div>
                     <img src="../assets/profile.png" alt="">

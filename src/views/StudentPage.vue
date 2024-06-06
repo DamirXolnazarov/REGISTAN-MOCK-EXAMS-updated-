@@ -12,7 +12,7 @@
                 </div>
                 <div class="right_side flex flex-col justify-center items-center">
                     <div class="coinSystem flex flex-row justify-center items-center w-[35px] h-[35px]">
-                        <span class="text-[white] text-[15px]">5</span>
+                        <span id="coin" class="text-[white] text-[15px]"></span>
                     </div>
                     <span class="text-center text-[15px] text-[#FFD05B]">coins</span>
                 </div>
@@ -30,37 +30,40 @@
                         title="Bu ikki kitobni o&#39;qimagan talaba, talaba emas!" frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         allowfullscreen></iframe>
-                    <span class="mt-[15px] text-center flex flex-row justify-center items-center">⚡️ Watch this motivational
+                    <span class="mt-[15px] text-center flex flex-row justify-center items-center">⚡️ Watch this
+                        motivational
                         video ⚡️</span>
                 </div>
             </div>
-     
+
         </div>
         <div class="bottomMenu h-[100px] w-[100%] px-[10px] fixed bottom-[0] left-[0]">
             <div class="categories px-[10px] pt-[40px] flex flex-row justify-between items-center">
                 <RouterLink to="/News">
-                <div class="news flex flex-col justify-between items-center">
-                    <img src="../assets/news.png" alt="">
-                    <span class="mt-[5px] text-[13px] font-medium">News</span>
-                </div>
+                    <div class="news flex flex-col justify-between items-center">
+                        <img src="../assets/news.png" alt="">
+                        <span class="mt-[5px] text-[13px] font-medium">News</span>
+                    </div>
                 </RouterLink>
                 <RouterLink to="/LevelTest">
-                <div class="level mr-[40px] flex flex-col justify-between items-center">
-                    <img src="../assets/test.png" alt="">
-                    <span class="mt-[5px] text-[13px] font-medium">Level Test</span>
-                </div>
-            </RouterLink>
-            <RouterLink to="/IELTS_tips">
-                <div class="Tips absolute top-[10px] flex flex-col justify-between items-center">
-                    <img class="absolute top-[38px] left-[60px]" src="../assets/lamp.png" alt="">
-                    <img src="../assets/tips.png" class="w-[45px]" alt="">
-                    <span class="mt-[5px] text-[15px] font-black">IELTS TIPS</span>
-                </div>
-            </RouterLink>
-                <div class="games ml-[40px] flex flex-col justify-between items-center">
-                    <img src="../assets/games.png" alt="">
-                    <span class="mt-[5px] text-[13px] font-medium">Games</span>
-                </div>
+                    <div class="level mr-[40px] flex flex-col justify-between items-center">
+                        <img src="../assets/test.png" alt="">
+                        <span class="mt-[5px] text-[13px] font-medium">Level Test</span>
+                    </div>
+                </RouterLink>
+                <RouterLink to="/IELTS_tips">
+                    <div class="Tips absolute top-[10px] flex flex-col justify-between items-center">
+                        <img class="absolute top-[38px] left-[60px]" src="../assets/lamp.png" alt="">
+                        <img src="../assets/tips.png" class="w-[45px]" alt="">
+                        <span class="mt-[5px] text-[15px] font-black">IELTS TIPS</span>
+                    </div>
+                </RouterLink>
+                <RouterLink to="/Games">
+                    <div class="games ml-[40px] flex flex-col justify-between items-center">
+                        <img src="../assets/games.png" alt="">
+                        <span class="mt-[5px] text-[13px] font-medium">Games</span>
+                    </div>
+                </RouterLink>
                 <RouterLink to="/Profile">
                     <div class="profile flex flex-col justify-between items-center">
                         <img src="../assets/profile.png" alt="">
@@ -105,6 +108,7 @@ export default {
                             teacher: i.c[5].v,
                             login: i.c[6].v,
                             password: i.c[7].v,
+                            coin: 5,
                         })
                         window.localStorage.account = JSON.stringify(this.Account[0])
                     }
@@ -114,6 +118,7 @@ export default {
 
             })
         this.user = JSON.parse(window.localStorage.user)
+        document.getElementById('coin').innerHTML = JSON.parse(window.localStorage.account).coin
         console.log(this.user);
     },
 
@@ -174,4 +179,5 @@ export default {
 .orta {
     left: 50%;
     transform: translateX(-50%);
-}</style>
+}
+</style>

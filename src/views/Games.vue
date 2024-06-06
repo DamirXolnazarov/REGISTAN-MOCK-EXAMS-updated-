@@ -25,13 +25,15 @@ import PuzzleGrid from '../components/GridPuzzle.vue'
         <div class="game_frame px-[15px] pt-[35px]">
             <div class="puzzle-game">
                 <div class="buttons">
-                    <button @click="changeGridSize(3)">3x3</button>
-                    <button @click="changeGridSize(4)">4x4</button>
-                    <button @click="changeGridSize(5)">5x5</button>
+                    <button class="btn bg-[lightgreen]" @click="changeGridSize(3)">3x3</button>
+                    <button class="btn bg-[orange]" @click="changeGridSize(4)">4x4</button>
+                    <button class="btn bg-[red]" @click="changeGridSize(5)">5x5</button>
                 </div>
                 <PuzzleGrid :gridSize="gridSize" />
             </div>
         </div>
+        <RouterLink to="/StudentPage"><div class="home cursor-pointer mt-[30px] mx-[195px]"><img class="w-[40px]" src="../assets/home.png" alt="">
+        </div></RouterLink>
     </div>
 </template>
 <script>

@@ -133,7 +133,6 @@ export default {
       show: false,
       Full_URL: '',
       Sheet_ID: '1IjdP6V9SJXKPIMqOv-1o0NXjTMLkDQeo4xMD3iyJdMY',
-      
       Sheet_TITLE: 'Reg',
     };
   },

@@ -1,4 +1,5 @@
 <script setup>
+import store from '../store/index.js';
 </script>
 <template>
     <div class="student">
@@ -12,7 +13,7 @@
                 </div>
                 <div class="right_side flex flex-col justify-center items-center">
                     <div class="coinSystem flex flex-row justify-center items-center w-[35px] h-[35px]">
-                        <span id="coin" class="text-[white] text-[15px]"></span>
+                        <span id="coin" class="text-[white] text-[15px]">{{ this.coins }}</span>
                     </div>
                     <span class="text-center text-[15px] text-[#FFD05B]">coins</span>
                 </div>
@@ -86,6 +87,7 @@ export default {
             user: {},
             Account: [],
             name: '',
+            coins: 0,
             Full_URL: '',
             Sheet_ID: '1IjdP6V9SJXKPIMqOv-1o0NXjTMLkDQeo4xMD3iyJdMY',
             Sheet_TITLE: 'Reg',
@@ -93,6 +95,7 @@ export default {
     },
 
     mounted() {
+        this.coins = JSON.parse(window.localStorage.coins)
         this.Full_URL = 'https://docs.google.com/spreadsheets/d/' + this.Sheet_ID + '/gviz/tq?sheet=' + this.Sheet_TITLE
         fetch(this.Full_URL)
             .then(res => res.text())
@@ -108,7 +111,6 @@ export default {
                             teacher: i.c[5].v,
                             login: i.c[6].v,
                             password: i.c[7].v,
-                            coin: 5,
                         })
                         window.localStorage.account = JSON.stringify(this.Account[0])
                     }
@@ -118,7 +120,6 @@ export default {
 
             })
         this.user = JSON.parse(window.localStorage.user)
-        document.getElementById('coin').innerHTML = JSON.parse(window.localStorage.account).coin
         console.log(this.user);
     },
 

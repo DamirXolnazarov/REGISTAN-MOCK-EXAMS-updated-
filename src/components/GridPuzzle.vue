@@ -1,3 +1,6 @@
+<script setup>
+import store from '../store/index.js'
+</script>
 <template>
   <div class="puzzle-grid" :style="gridStyle">
     <div v-for="(tile, index) in tiles" :key="index" :class="['tile', { empty: tile === 0 }]" :style="tileStyle"
@@ -18,13 +21,10 @@ export default {
   data() {
     return {
       tiles: this.shuffleTiles([...Array(this.gridSize * this.gridSize - 1).keys()].map(i => i + 1).concat(0)),
-      coins: 0,
       datas: {},
     };
   },
   mounted() {
-    this.coins = JSON.parse(window.localStorage.account).coin
-    this.datas = JSON.parse(window.localStorage.account)
 
   },
   computed: {
@@ -72,17 +72,8 @@ export default {
         [this.tiles[index], this.tiles[emptyIndex]] = [this.tiles[emptyIndex], this.tiles[index]];
         if (this.isSolved()) {
           alert('Congratulations! You solved the puzzle!');
-          this.coins = this.coins + 10
-          window.localStorage.account = JSON.stringify({
-            email: this.datas.email,
-            name: this.datas.name,
-            surname: this.datas.surname,
-            branch: this.datas.branch,
-            teacher: this.datas.teacher,
-            login: this.datas.login,
-            password: this.datas.password,
-            coin: this.coins,
-          })
+          this.$store.dispatch('ADD_COINS' , this.gridSize)
+          console.log(this.$store.state.coins);
         }
       }
     },

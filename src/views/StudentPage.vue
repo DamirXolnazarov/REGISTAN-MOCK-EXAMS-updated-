@@ -1,5 +1,5 @@
 <script setup>
-import store from '../store/index.js';
+import CoinDisplay from '@/components/CoinDisplay.vue';
 </script>
 <template>
     <div class="student">
@@ -13,7 +13,7 @@ import store from '../store/index.js';
                 </div>
                 <div class="right_side flex flex-col justify-center items-center">
                     <div class="coinSystem flex flex-row justify-center items-center w-[35px] h-[35px]">
-                        <span id="coin" class="text-[white] text-[15px]">{{ this.coins }}</span>
+                        <span id="coin" class="text-[white] text-[15px]"> <CoinDisplay :count="this.coins"/> </span>
                     </div>
                     <span class="text-center text-[15px] text-[#FFD05B]">coins</span>
                 </div>
@@ -81,13 +81,14 @@ import store from '../store/index.js';
 <script>
 export default {
     name: '',
-
+    components:{
+    },
     data() {
         return {
             user: {},
             Account: [],
             name: '',
-            coins: 0,
+            coins: JSON.parse(window.localStorage.coin),
             Full_URL: '',
             Sheet_ID: '1IjdP6V9SJXKPIMqOv-1o0NXjTMLkDQeo4xMD3iyJdMY',
             Sheet_TITLE: 'Reg',
@@ -95,7 +96,6 @@ export default {
     },
 
     mounted() {
-        this.coins = JSON.parse(window.localStorage.coins)
         this.Full_URL = 'https://docs.google.com/spreadsheets/d/' + this.Sheet_ID + '/gviz/tq?sheet=' + this.Sheet_TITLE
         fetch(this.Full_URL)
             .then(res => res.text())

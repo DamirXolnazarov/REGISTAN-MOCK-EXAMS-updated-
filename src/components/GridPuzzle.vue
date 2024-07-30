@@ -1,5 +1,6 @@
 <script setup>
-import store from '../store/index.js'
+import store from '../store/index'
+import { mapState, mapActions } from 'vuex';
 </script>
 <template>
   <div class="puzzle-grid" :style="gridStyle">
@@ -22,12 +23,18 @@ export default {
     return {
       tiles: this.shuffleTiles([...Array(this.gridSize * this.gridSize - 1).keys()].map(i => i + 1).concat(0)),
       datas: {},
+      coin: 0,
     };
   },
   mounted() {
-
+    if (window.localStorage.coin) {
+      this.coin = JSON.parse(window.localStorage.coin)
+    } else {
+      window.localStorage.coin = JSON.stringify(this.coin)
+    }
   },
   computed: {
+    ...mapState(['coins']),
     gridStyle() {
       return {
         display: 'grid',
@@ -56,6 +63,7 @@ export default {
     },
   },
   methods: {
+    ...mapActions(['ADD_COIN_MUTATION']),
     shuffleTiles(tiles) {
       for (let i = tiles.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -72,8 +80,9 @@ export default {
         [this.tiles[index], this.tiles[emptyIndex]] = [this.tiles[emptyIndex], this.tiles[index]];
         if (this.isSolved()) {
           alert('Congratulations! You solved the puzzle!');
-          this.$store.dispatch('ADD_COINS' , this.gridSize)
-          console.log(this.$store.state.coins);
+          this.counter += 10
+          window.localStorage.counter = JSON.stringify(this.counter)
+          this.counter = JSON.parse(window.localStorage.counter)
         }
       }
     },
@@ -83,6 +92,8 @@ export default {
       }
       return true;
     },
+  
+
   },
   watch: {
     gridSize() {

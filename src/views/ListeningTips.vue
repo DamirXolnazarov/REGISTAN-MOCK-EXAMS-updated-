@@ -3,7 +3,7 @@ import Tips from '@/components/Tips.vue';
 import 'animate.css';
 </script>
 <template>
-  <div class="listeningTips" id="tap">
+  <div class="listeningTips relative" id="tap">
     <img class="headphone w-[50px] top-[9px] absolute right-[65px]" src="../assets/headphone.png" alt="">
     <span class="text-[36px] my-[25px] font-black text-center flex flex-row justify-center w-[100%]">Listening <span
         class="text-[#FAFF00]">TIPS</span></span>
@@ -28,10 +28,10 @@ import 'animate.css';
       </div>
     </div>
 
-    <div class="extendedTip absolute w-[100%] h-[100vh] left-[0] top-[0] animate__repeat-none"
+    <div @click="disappear()" v-if="mark" class="inline leave fixed home cursor-pointer"><img class="w-[140px] rotate-[180deg]"
+        src="../assets/arrow1.png" alt=""></div>
+    <div class="extendedTip fixed flex flex-col justify-center items-center px-[25px] w-[100%] h-[100%] top-0 left-0 animate__repeat-none"
       :style="{ backgroundColor: bgColor, animationName: ani }" v-if="selected">
-      <div @click="disappear()" class="home cursor-pointer top-[35px] left-[25px] absolute"><img class="w-[40px] rotate-[180deg]"
-          src="../assets/arrow.png" alt=""></div>
       <span class="index">{{ son }}</span>
       <span class="tip">{{ SelectedTip }}</span>
     </div>
@@ -45,6 +45,7 @@ export default {
   data() {
     return {
       selected: false,
+      mark: false,
       SelectedTip: '',
       bgColor: '',
       son: '',
@@ -119,10 +120,12 @@ export default {
         this.bgColor = a.color
         this.son = a.index
         this.selected = true
+        this.mark = true
       }
     },
     disappear(){
-      this.ani = 'bounceOut'
+      this.ani = 'bounceOutLeft'
+      this.mark = false
       document.documentElement.style.overflow = 'visible'
       setTimeout(() => {
         this.selected = false
@@ -141,7 +144,12 @@ export default {
     scale: 1;
   }
 }
-
+.leave{
+  z-index: 999999999999 !important;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
 .headphone {
   transform: rotate(45deg);
 }
@@ -161,7 +169,7 @@ export default {
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
   z-index: -1;
-  -webkit-text-stroke: 1.5px white;
+  -webkit-text-stroke: 2px white;
   color: transparent
 }
 .tip{
@@ -169,7 +177,6 @@ export default {
   top: 120px;
   left: 25px;
   right: 25px;
-  position: absolute;
 }
 
 </style>

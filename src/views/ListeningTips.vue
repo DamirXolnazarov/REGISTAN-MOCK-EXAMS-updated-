@@ -135,15 +135,6 @@ export default {
 };
 </script>
 <style scoped>
-@keyframes tip {
-  0% {
-    scale: 0;
-  }
-
-  100% {
-    scale: 1;
-  }
-}
 .leave{
   z-index: 999999999999 !important;
   top: 10px;

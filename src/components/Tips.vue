@@ -61,7 +61,7 @@ export default {
     z-index: 1111;
 }
 .text{
-    color:white;
+    color:rgb(0, 0, 0);
     font-weight: lighter !important;
     line-height: 20px;
 }
